@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { cacheImage, getCachedImage, isCached } from '@/scripts/imageCache'
+import { cacheImage,  isCached } from '@/scripts/imageCache'
 import { Howl } from 'howler'
 
 interface Resource {
@@ -27,7 +27,7 @@ export function ResourceLoader({ resources, onLoadComplete }: ResourceLoaderProp
           }
         } else if (resource.type === 'audio') {
           await new Promise<void>((resolve) => {
-            const sound = new Howl({
+            new Howl({
               src: [resource.src],
               onload: () => resolve(),
             })

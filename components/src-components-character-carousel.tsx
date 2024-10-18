@@ -1,10 +1,9 @@
 'use client'
 
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Howl } from 'howler'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { cacheImage, getCachedImage, isCached } from '@/scripts/imageCache'
 import { ResourceLoader } from '../components/ResourceLoader'
 import { Overlay } from '../components/Overlay'
 import { FinalImages } from '../components/FinalImages'
@@ -42,12 +41,11 @@ export function CharacterCarouselComponent() {
   const [isScrolling, setIsScrolling] = useState(false)
   const [showFinalImages, setShowFinalImages] = useState(false)
   const [finalImageIndex, setFinalImageIndex] = useState(0)
-  const carouselRef = useRef(null)
   const [howl, setHowl] = useState<Howl | null>(null)
   const [showOverlay, setShowOverlay] = useState(true)
   const [isAudioReady, setIsAudioReady] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [cachedImages, setCachedImages] = useState<{ [key: string]: string }>({})
+  const [cachedImages] = useState<{ [key: string]: string }>({})
   const [finalImages, setFinalImages] = useState<Array<{ id: number, name: string, image: string, backgroundId: number }>>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -80,7 +78,7 @@ export function CharacterCarouselComponent() {
   }, [])
 
   const startExperience = () => {
-    if (howl) {
+    if (howl && !isAudioReady) {
       howl.play()
       setIsAudioReady(true)
       setShowOverlay(false)
