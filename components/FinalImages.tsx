@@ -15,14 +15,6 @@ interface FinalImagesProps {
 }
 
 export function FinalImages({ images, currentIndex, getImageSrc }: FinalImagesProps) {
-  const glowAnimation = {
-    '0%, 100%': { filter: 'brightness(100%) drop-shadow(0 0 5px rgba(255, 255, 0, 0.7))' },
-    '50%': { filter: 'brightness(120%) drop-shadow(0 0 15px rgba(255, 255, 0, 0.9))' },
-  };
-
-  const buttonStyle = {
-    animation: 'glow 2s ease-in-out infinite',
-  };
   
   return (
     
