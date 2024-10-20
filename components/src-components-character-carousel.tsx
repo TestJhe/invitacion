@@ -20,10 +20,12 @@ const characters = [
   { id: 2, name: '', image: '/resources/img/DonaPancha.png', backgroundId: 1 },
   { id: 3, name: '', image: '/resources/img/LoboBeto2.png', backgroundId: 1 },
   { id: 4, name: '', image: '/resources/img/VacaLola.png', backgroundId: 1 },
-  { id: 5, name: '', image: '/resources/img/Percheron.png', backgroundId: 2 },
-  { id: 6, name: '', image: '/resources/img/Pollito2.png', backgroundId: 2 },
-  { id: 7, name: '', image: '/resources/img/Zenon2.png', backgroundId: 2 },
-  { id: 8, name: '', image: '/resources/img/GalloPinto2.png', backgroundId: 2 },
+  { id: 5, name: '', image: '/resources/img/LoroPepe.png', backgroundId: 1 },
+  { id: 6, name: '', image: '/resources/img/Percheron.png', backgroundId: 2 },
+  { id: 7, name: '', image: '/resources/img/Pollito2.png', backgroundId: 2 },
+  { id: 8, name: '', image: '/resources/img/Bartolito2.png', backgroundId: 2 },
+  { id: 9, name: '', image: '/resources/img/Zenon2.png', backgroundId: 2 },
+  { id: 10, name: '', image: '/resources/img/GalloPinto2.png', backgroundId: 2 },
 ]
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -68,7 +70,7 @@ export function CharacterCarouselComponent() {
       .then((imageList: string[]) => {
         const shuffledImages = shuffleArray(imageList)
         setFinalImages(shuffledImages.map((image, index) => ({
-          id: 9 + index,
+          id: 11 + index,
           name: '',
           image,
           backgroundId: 3
