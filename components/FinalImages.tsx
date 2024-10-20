@@ -15,7 +15,17 @@ interface FinalImagesProps {
 }
 
 export function FinalImages({ images, currentIndex, getImageSrc }: FinalImagesProps) {
+  const glowAnimation = {
+    '0%, 100%': { filter: 'brightness(100%) drop-shadow(0 0 5px rgba(255, 255, 0, 0.7))' },
+    '50%': { filter: 'brightness(120%) drop-shadow(0 0 15px rgba(255, 255, 0, 0.9))' },
+  };
+
+  const buttonStyle = {
+    animation: 'glow 2s ease-in-out infinite',
+  };
+  
   return (
+    
     <div className="text-center w-full flex flex-col items-center px-4 pb-4 md:pb-8">
       <AnimatePresence mode="sync">
         <motion.div
@@ -45,65 +55,78 @@ export function FinalImages({ images, currentIndex, getImageSrc }: FinalImagesPr
       </AnimatePresence>
       <div className="space-y-4 mt-8 w-full max-w-md">
       <Button 
-            className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] hover:text-black border-2 border-black text-xl font-sans"
-            onClick={() => {
-              // Abrir WhatsApp con un mensaje predefinido
-              const whatsappUrl = `https://wa.me/31344864?text=Hola, confirmo mi asistencia, me llamo `;
-              window.open(whatsappUrl, '_blank');
-            }}
-          >
-            Confirma tu asistencia
-          </Button>
+          className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] 
+                    hover:text-black border-2 border-black text-xl font-sans
+                    hover:scale-105 hover:shadow-lg relative 
+                    group shadow-[0_5px_0_rgb(0,0,0)] 
+                    hover:shadow-[0_2px_0px_rgb(0,0,0)]
+                    transition duration-300 ease-in-out 
+                    transform hover:scale-105 
+                    hover:shadow-xl hover:opacity-90 
+                    animate-pulse"
+          onClick={() => {
+            const whatsappUrl = `https://wa.me/31344864?text=Hola, confirmo mi asistencia, me llamo `;
+            window.open(whatsappUrl, '_blank');
+          }}
+        >
+          <span className="relative z-10">Confirma tu asistencia</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 opacity-0 group-hover:opacity-75 transition-opacity duration-300 ease-in-out"></span>
+        </Button>
 
-          <Button 
-            className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] hover:text-black border-2 border-black text-xl font-sans"
-            onClick={() => {
-              // Abrir Google Maps o Waze con la ubicación correspondiente
-              const locationUrl = `https://maps.app.goo.gl/SqfkRy9RvKTHudU26?g_st=ac`;
-              window.open(locationUrl, '_blank');
-            }}
-          >
-            Ubicación
-          </Button>
+        <Button 
+          className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] 
+                    hover:text-black border-2 border-black text-xl font-sans
+                    hover:scale-105 hover:shadow-lg relative 
+                    group shadow-[0_5px_0_rgb(0,0,0)] 
+                    hover:shadow-[0_2px_0px_rgb(0,0,0)]
+                    transition duration-300 ease-in-out 
+                    transform hover:scale-105 
+                    hover:shadow-xl hover:opacity-90 
+                    animate-pulse"
+          onClick={() => {
+            const locationUrl = `https://maps.app.goo.gl/SqfkRy9RvKTHudU26?g_st=ac`;
+            window.open(locationUrl, '_blank');
+          }}
+        >
+          <span className="relative z-10">Ubicación</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 opacity-0 group-hover:opacity-75 transition-opacity duration-300 ease-in-out"></span>
+        </Button>
 
-          <Button 
-            className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] hover:text-black border-2 border-black text-xl font-sans"
-            onClick={() => {
-              // Agregar evento al calendario
-              const event = {
-                title: 'Cumpleaños Derek',
-                start: new Date('2024-11-02T20:30:00Z'),  // Hora de inicio en UTC
-                end: new Date('2024-11-03T00:00:00Z'),  // Hora de finalización en UTC
-                location: 'https://maps.app.goo.gl/SqfkRy9RvKTHudU26?g_st=ac',  // Ubicación
-                description: 'Celebración de cumpleaños de Derek con amigos y familia',  // Descripción              
-              };
-              
-              function formatDateForCalendar(date_: Date) {
-                return date_.toISOString().replace(/-|:|\.\d\d\d/g,"");
-              }
-              
-              let calendarUrl;
-              
-              // if (calendarType === 'google') {
-                calendarUrl = `https://calendar.google.com/calendar/r/eventedit?`;
-                calendarUrl += `text=${encodeURIComponent(event.title)}`;
-                calendarUrl += `&dates=${formatDateForCalendar(event.start)}/${formatDateForCalendar(event.end)}`;
-                calendarUrl += `&location=${encodeURIComponent(event.location)}`;
-                calendarUrl += `&details=${encodeURIComponent(event.description)}`;
-              // } else if (calendarType === 'outlook') {
-              //   calendarUrl = `https://outlook.office.com/calendar/0/deeplink/?path=/calendar/action/compose&rru=addevent`;
-              //   calendarUrl += `&subject=${encodeURIComponent(event.title)}`;
-              //   calendarUrl += `&startdt=${formatDateForCalendar(event.start)}`;
-              //   calendarUrl += `&enddt=${formatDateForCalendar(event.end)}`;
-              //   calendarUrl += `&location=${encodeURIComponent(event.location)}`;
-              //   calendarUrl += `&body=${encodeURIComponent(event.description)}`;
-              // }
-              
-              window.open(calendarUrl, '_blank');
-            }}
-          >
-            Agrega a tu calendario
-          </Button>
+        <Button 
+          className="w-full bg-[rgba(184,46,82,1)] hover:bg-[#ffce0a] 
+                    hover:text-black border-2 border-black text-xl font-sans
+                    hover:scale-105 hover:shadow-lg relative 
+                    group shadow-[0_5px_0_rgb(0,0,0)] 
+                    hover:shadow-[0_2px_0px_rgb(0,0,0)]
+                    transition duration-300 ease-in-out 
+                    transform hover:scale-105 
+                    hover:shadow-xl hover:opacity-90 
+                    animate-pulse"
+          onClick={() => {
+            const event = {
+              title: 'Cumpleaños Derek',
+              start: new Date('2024-11-02T20:30:00Z'),
+              end: new Date('2024-11-03T00:00:00Z'),
+              location: 'https://maps.app.goo.gl/SqfkRy9RvKTHudU26?g_st=ac',
+              description: 'Celebración de cumpleaños de Derek con amigos y familia',
+            };
+            
+            function formatDateForCalendar(date_: Date) {
+              return date_.toISOString().replace(/-|:|\.\d\d\d/g,"");
+            }
+            
+            let calendarUrl = `https://calendar.google.com/calendar/r/eventedit?`;
+            calendarUrl += `text=${encodeURIComponent(event.title)}`;
+            calendarUrl += `&dates=${formatDateForCalendar(event.start)}/${formatDateForCalendar(event.end)}`;
+            calendarUrl += `&location=${encodeURIComponent(event.location)}`;
+            calendarUrl += `&details=${encodeURIComponent(event.description)}`;
+            
+            window.open(calendarUrl, '_blank');
+          }}
+        >
+          <span className="relative z-10">Agrega a tu calendario</span>
+          <span className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 opacity-0 group-hover:opacity-75 transition-opacity duration-300 ease-in-out"></span>
+        </Button>
       </div>
     </div>
   )
